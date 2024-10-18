@@ -1,49 +1,50 @@
-import { useAuth, useCandidActor } from "@bundly/ares-react";
-import { View, Text, Pressable, TextInput, StyleSheet, ScrollView, SafeAreaView } from "react-native";
+// import { useAuth, useCandidActor } from "@bundly/ares-react";
+import { View, Text, Pressable, TextInput, StyleSheet, ScrollView, SafeAreaView } from
+    "react-native";
 import { CandidActors } from "../../canisters";
 import { useState } from "react";
 
 
-  type Denuncia = {
-    id : any;
-    denunciante : Denunciante;
-    denunciado : Denunciado;
-    entidad : string;
-    municipio : string;
-    bienJuridicoAfectado : string;
-    tipoDelito : string;
-    subtipo : string;
-    hora : string;
-    descripcion : string;
-    status : string;
-  };
+type Denuncia = {
+    id: any;
+    denunciante: Denunciante;
+    denunciado: Denunciado;
+    entidad: string;
+    municipio: string;
+    bienJuridicoAfectado: string;
+    tipoDelito: string;
+    subtipo: string;
+    hora: string;
+    descripcion: string;
+    status: string;
+};
 
-  type Denunciante = {
-    id : any;
-    nombre : string;
-    apellidoPaterno : string;
-    apellidoMaterno : string;
-    calle : string;
-    numero : string;
-    colonia : string;
-    municipio : string;
-    estado : string;
-    telefono : string;
-    email : string;
-  };
+type Denunciante = {
+    id: any;
+    nombre: string;
+    apellidoPaterno: string;
+    apellidoMaterno: string;
+    calle: string;
+    numero: string;
+    colonia: string;
+    municipio: string;
+    estado: string;
+    telefono: string;
+    email: string;
+};
 
-  type Denunciado = {
-    id : any;
-    nombre : string;
-    apellidoPaterno : string;
-    apellidoMaterno : string;
-    calle : string;
-    numero : string;
-    colonia : string;
-    municipio : string;
-    estado : string;
-    telefono : string;
-  };
+type Denunciado = {
+    id: any;
+    nombre: string;
+    apellidoPaterno: string;
+    apellidoMaterno: string;
+    calle: string;
+    numero: string;
+    colonia: string;
+    municipio: string;
+    estado: string;
+    telefono: string;
+};
 
 export default function CrearDenunciaScreen() {
 
@@ -51,278 +52,242 @@ export default function CrearDenunciaScreen() {
     const [denuncianteData, setDenuncianteData] = useState({} as Denunciante);
     const [denunciadoData, setDenunciadoData] = useState({} as Denunciado);
 
-    const { currentIdentity } = useAuth();
+    // const { currentIdentity } = useAuth();
 
-    const backend = useCandidActor<CandidActors>("backend", currentIdentity) as CandidActors["backend"];
+    // const backend = useCandidActor<CandidActors>("backend", currentIdentity) as CandidActors["backend"];
 
-    const handleChangeText = (field, value , setState) => {
-        setState(prevState => ({...prevState, [field]: value}));
+    const handleChangeText = (field, value, setState) => {
+        setState(prevState => ({ ...prevState, [field]: value }));
     };
 
-    async function handlePress() {
-        try {
-            // Crea los nuevos objetos localmente antes de setear el estado
-            const newDenunciante = { ...denuncianteData, id: Date.now() + 1 };
-            const newDenunciado = { ...denunciadoData, id: Date.now() + 2 };
-            const newDenuncia: Denuncia = {
-                ...denunciaData,
-                id: Date.now(),
-                denunciante: newDenunciante,
-                denunciado: newDenunciado,
-                status: 'Pendiente',
-                hora: "09:15"
-            };
+    // async function handlePress() {
+    //     try {
+    //         // Crea los nuevos objetos localmente antes de setear el estado
+    //         const newDenunciante = { ...denuncianteData, id: Date.now() + 1 };
+    //         const newDenunciado = { ...denunciadoData, id: Date.now() + 2 };
+    //         const newDenuncia: Denuncia = {
+    //             ...denunciaData,
+    //             id: Date.now(),
+    //             denunciante: newDenunciante,
+    //             denunciado: newDenunciado,
+    //             status: 'Pendiente',
+    //             hora: "09:15"
+    //         };
 
-            setDenuncianteData(newDenunciante);
-            setDenunciadoData(newDenunciado);
-            setDenunciaData(newDenuncia);
+    //         setDenuncianteData(newDenunciante);
+    //         setDenunciadoData(newDenunciado);
+    //         setDenunciaData(newDenuncia);
 
-            // console.log(typeof newDenuncia.denunciado.municipio);
-            // console.log(newDenuncia);
-            // console.log(typeof newDenuncia.denunciado.municipio);
-            // const result = await backend.addDenuncia(newDenuncia);
-            const result = await backend.addDenuncia(newDenuncia);
-            console.log(result);
+    //         // console.log(typeof newDenuncia.denunciado.municipio);
+    //         // console.log(newDenuncia);
+    //         // console.log(typeof newDenuncia.denunciado.municipio);
+    //         // const result = await backend.addDenuncia(newDenuncia);
+    //         const result = await backend.addDenuncia(newDenuncia);
+    //         console.log(result);
 
-        } catch (error) {
-            console.log(error.message);
-        }
-    }
+    //     } catch (error) {
+    //         console.log(error.message);
+    //     }
+    // }
 
-    return(
+    return (
         <SafeAreaView style={styles.view}>
-        <ScrollView style={styles.content}>
-            <Text>
-                Crear Denuncia
-            </Text>
-            <View>
-                <View>
-                    <Text>Entidad</Text>
-                    <TextInput
-                        placeholder="Entidad"
-                        value={denunciaData.entidad || ''}
-                        onChangeText={(text) => handleChangeText('entidad', text, setDenunciaData)}
-                    />
-                </View>
-                <View>
-                    <Text>Municipio</Text>
-                    <TextInput
-                        placeholder="Municipio"
-                        value={denunciaData.municipio || ''}
-                        onChangeText={(text) => handleChangeText('municipio', text, setDenunciaData)}
-                    />
-                </View>
-                <View>
-                    <Text>Bien jurídico afectado</Text>
-                    <TextInput
-                        placeholder="Bien jurídico afectado"
-                        value={denunciaData.bienJuridicoAfectado || ''}
-                        onChangeText={(text) => handleChangeText('bienJuridicoAfectado', text, setDenunciaData)}
-                    />
-                </View>
-                <View>
-                    <Text>Tipo de delito</Text>
-                    <TextInput
-                        placeholder="Tipo de delito"
-                        value={denunciaData.tipoDelito || ''}
-                        onChangeText={(text) => handleChangeText('tipoDelito', text, setDenunciaData)}
-                    />
-                </View>
-                <View>
-                    <Text>Subtipo de delito</Text>
-                    <TextInput
-                        placeholder="Subtipo de delito"
-                        value={denunciaData.subtipo || ''}
-                        onChangeText={(text) => handleChangeText('subtipo', text, setDenunciaData)}
-                    />
-                </View>
-                <View>
-                    <Text>Datos del denunciante</Text>
-                    <View>
-                        <Text>Nombre</Text>
+            <ScrollView style={styles.content}>
+                <Text style={styles.title}>Crear Denuncia</Text>
+
+                {/* Datos de la Denuncia */}
+                <View style={styles.section}>
+                    <Text style={styles.sectionTitle}>Datos de la Denuncia</Text>
+                    <View style={styles.inputGroup}>
+                        <Text style={styles.label}>Entidad</Text>
                         <TextInput
+                            style={styles.input}
+                            placeholder="Entidad"
+                            value={denunciaData.entidad || ''}
+                            onChangeText={(text) => handleChangeText('entidad', text, setDenunciaData)}
+                        />
+                    </View>
+
+                    <View style={styles.inputGroup}>
+                        <Text style={styles.label}>Municipio</Text>
+                        <TextInput
+                            style={styles.input}
+                            placeholder="Municipio"
+                            value={denunciaData.municipio || ''}
+                            onChangeText={(text) => handleChangeText('municipio', text, setDenunciaData)}
+                        />
+                    </View>
+
+                    <View style={styles.inputGroup}>
+                        <Text style={styles.label}>Bien Jurídico Afectado</Text>
+                        <TextInput
+                            style={styles.input}
+                            placeholder="Bien Jurídico Afectado"
+                            value={denunciaData.bienJuridicoAfectado || ''}
+                            onChangeText={(text) => handleChangeText('bienJuridicoAfectado', text, setDenunciaData)}
+                        />
+                    </View>
+
+                    <View style={styles.inputGroup}>
+                        <Text style={styles.label}>Tipo de Delito</Text>
+                        <TextInput
+                            style={styles.input}
+                            placeholder="Tipo de Delito"
+                            value={denunciaData.tipoDelito || ''}
+                            onChangeText={(text) => handleChangeText('tipoDelito', text, setDenunciaData)}
+                        />
+                    </View>
+
+                    <View style={styles.inputGroup}>
+                        <Text style={styles.label}>Subtipo de Delito</Text>
+                        <TextInput
+                            style={styles.input}
+                            placeholder="Subtipo de Delito"
+                            value={denunciaData.subtipo || ''}
+                            onChangeText={(text) => handleChangeText('subtipo', text, setDenunciaData)}
+                        />
+                    </View>
+                </View>
+
+                {/* Datos del Denunciante */}
+                <View style={styles.section}>
+                    <Text style={styles.sectionTitle}>Datos del Denunciante</Text>
+                    <View style={styles.inputGroup}>
+                        <Text style={styles.label}>Nombre</Text>
+                        <TextInput
+                            style={styles.input}
                             placeholder="Nombre del denunciante"
                             value={denuncianteData.nombre || ''}
                             onChangeText={(text) => handleChangeText('nombre', text, setDenuncianteData)}
                         />
                     </View>
-                    <View>
-                        <Text>Apellido Paterno</Text>
+
+                    <View style={styles.inputGroup}>
+                        <Text style={styles.label}>Apellido Paterno</Text>
                         <TextInput
+                            style={styles.input}
                             placeholder="Apellido Paterno del denunciante"
                             value={denuncianteData.apellidoPaterno || ''}
                             onChangeText={(text) => handleChangeText('apellidoPaterno', text, setDenuncianteData)}
                         />
                     </View>
-                    <View>
-                        <Text>Apellido Materno</Text>
+
+                    <View style={styles.inputGroup}>
+                        <Text style={styles.label}>Apellido Materno</Text>
                         <TextInput
+                            style={styles.input}
                             placeholder="Apellido Materno del denunciante"
                             value={denuncianteData.apellidoMaterno || ''}
                             onChangeText={(text) => handleChangeText('apellidoMaterno', text, setDenuncianteData)}
                         />
                     </View>
-                    <View>
-                        <Text>Calle</Text>
+
+                    <View style={styles.inputGroup}>
+                        <Text style={styles.label}>Calle</Text>
                         <TextInput
+                            style={styles.input}
                             placeholder="Calle del denunciante"
                             value={denuncianteData.calle || ''}
                             onChangeText={(text) => handleChangeText('calle', text, setDenuncianteData)}
                         />
                     </View>
-                    <View>
-                        <Text>Número</Text>
-                        <TextInput
-                            placeholder="Número de casa del denunciante"
-                            value={denuncianteData.numero || ''}
-                            onChangeText={(text) => handleChangeText('numero', text, setDenuncianteData)}
-                        />
-                    </View>
-                    <View>
-                        <Text>Colonia</Text>
-                        <TextInput
-                            placeholder="Colonia del denunciante"
-                            value={denuncianteData.colonia || ''}
-                            onChangeText={(text) => handleChangeText('colonia', text, setDenuncianteData)}
-                        />
-                    </View>
-                    <View>
-                        <Text>Municipio</Text>
-                        <TextInput
-                            placeholder="Municipio del denunciante"
-                            value={denuncianteData.municipio || ''}
-                            onChangeText={(text) => handleChangeText('municipio', text, setDenuncianteData)}
-                        />
-                    </View>
-                    <View>
-                        <Text>Estado</Text>
-                        <TextInput
-                            placeholder="Estado del denunciante"
-                            value={denuncianteData.estado || ''}
-                            onChangeText={(text) => handleChangeText('estado', text, setDenuncianteData)}
-                        />
-                    </View>
-                    <View>
-                        <Text>Teléfono</Text>
-                        <TextInput
-                            placeholder="Número telefónico del denunciante"
-                            value={denuncianteData.telefono || ''}
-                            onChangeText={(text) => handleChangeText('telefono', text, setDenuncianteData)}
-                        />
-                    </View>
-                    <View>
-                        <Text>Email</Text>
-                        <TextInput
-                            placeholder="Email del denunciante"
-                            value={denuncianteData.email || ''}
-                            onChangeText={(text) => handleChangeText('email', text, setDenuncianteData)}
-                        />
-                    </View>
+
+                    {/* Más campos para Denunciante */}
+                    {/* ... */}
                 </View>
-                <View>
-                    <Text>Datos del denunciado</Text>
-                    <View>
-                        <Text>Nombre</Text>
+
+                {/* Datos del Denunciado */}
+                <View style={styles.section}>
+                    <Text style={styles.sectionTitle}>Datos del Denunciado</Text>
+                    <View style={styles.inputGroup}>
+                        <Text style={styles.label}>Nombre</Text>
                         <TextInput
+                            style={styles.input}
                             placeholder="Nombre del denunciado"
                             value={denunciadoData.nombre || ''}
                             onChangeText={(text) => handleChangeText('nombre', text, setDenunciadoData)}
                         />
                     </View>
-                    <View>
-                        <Text>Apellido Paterno</Text>
-                        <TextInput
-                            placeholder="Apellido Paterno del denunciado"
-                            value={denunciadoData.apellidoPaterno || ''}
-                            onChangeText={(text) => handleChangeText('apellidoPaterno', text, setDenunciadoData)}
-                        />
-                    </View>
-                    <View>
-                        <Text>Apellido Materno</Text>
-                        <TextInput
-                            placeholder="Apellido Materno del denunciado"
-                            value={denunciadoData.apellidoMaterno || ''}
-                            onChangeText={(text) => handleChangeText('apellidoMaterno', text, setDenunciadoData)}
-                        />
-                    </View>
-                    <View>
-                        <Text>Calle</Text>
-                        <TextInput
-                            placeholder="Calle del denunciado"
-                            value={denunciadoData.calle || '' }
-                            onChangeText={(text) => handleChangeText('calle', text, setDenunciadoData)}
-                        />
-                    </View>
-                    <View>
-                        <Text>Numero</Text>
-                        <TextInput
-                            placeholder="Numero del denunciado"
-                            value={denunciadoData.numero || ''}
-                            onChangeText={(text) => handleChangeText('numero', text, setDenunciadoData)}
-                        />
-                    </View>
-                    <View>
-                        <Text>Colonia</Text>
-                        <TextInput
-                            placeholder="Colonia del denunciado"
-                            value={denunciadoData.colonia || ''}
-                            onChangeText={(text) => handleChangeText('colonia', text, setDenunciadoData)}
-                        />
-                    </View>
-                    <View>
-                        <Text>Municipio</Text>
-                        <TextInput
-                            placeholder="Municipio del denunciado"
-                            value={denunciadoData.municipio || ''}
-                            onChangeText={(text) => handleChangeText('municipio', text, setDenunciadoData)}
-                        />
-                    </View>
-                    <View>
-                        <Text>Estado</Text>
-                        <TextInput
-                            placeholder="Estado del denunciado"
-                            value={denunciadoData.estado || ''}
-                            onChangeText={(text) => handleChangeText('estado', text, setDenunciadoData)}
-                        />
-                    </View>
-                    <View>
-                        <Text>Teléfono</Text>
-                        <TextInput
-                            placeholder="Teléfono del denunciado"
-                            value={denunciadoData.telefono || ''}
-                            onChangeText={(text) => handleChangeText('telefono', text, setDenunciadoData)}
-                        />
-                    </View>
+
+                    {/* Más campos para Denunciado */}
+                    {/* ... */}
                 </View>
-                <View>
-                    <Text>Descripción del suceso</Text>
+
+                {/* Descripción del Suceso */}
+                <View style={styles.inputGroup}>
+                    <Text style={styles.label}>Descripción del Suceso</Text>
                     <TextInput
+                        style={[styles.input, styles.textArea]}
                         placeholder="Descripción del suceso"
                         value={denunciaData.descripcion || ''}
                         onChangeText={(text) => handleChangeText('descripcion', text, setDenunciaData)}
+                        multiline
                     />
                 </View>
-                <Pressable onPress={() => handlePress()}>
-                    <Text>Hola</Text>
+
+                {/* Botón */}
+                <Pressable style={styles.button} onPress={() => console.log("Formulario enviado")}>
+                    <Text style={styles.buttonText}>Enviar Denuncia</Text>
                 </Pressable>
-            </View>
-        </ScrollView>
+            </ScrollView>
         </SafeAreaView>
     );
 };
 
 const styles = StyleSheet.create({
-    pressable: {
-        backgroundColor: "white",
-        width: "90%"
+    view: {
+        flex: 1,
+        padding: 16,
+        backgroundColor: '#f4f4f4',
     },
     content: {
-        paddingBottom: 70
+        paddingBottom: 70,
     },
-    formItem: {
-        padding: 8
+    title: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        marginBottom: 20,
     },
-    view: {
-        flex: 1
-    }
+    section: {
+        marginBottom: 20,
+    },
+    sectionTitle: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        marginBottom: 10,
+    },
+    inputGroup: {
+        marginBottom: 15,
+    },
+    label: {
+        fontSize: 16,
+        marginBottom: 5,
+    },
+    input: {
+        height: 40,
+        borderColor: '#ccc',
+        borderWidth: 1,
+        borderRadius: 8,
+        paddingHorizontal: 10,
+        backgroundColor: '#fff',
+    },
+    textArea: {
+        height: 100,
+        textAlignVertical: 'top',
+    },
+    button: {
+        backgroundColor: '#4CAF50',
+        padding: 15,
+        borderRadius: 8,
+        alignItems: 'center',
+        marginTop: 20,
+    },
+    buttonText: {
+        color: '#fff',
+        fontSize: 16,
+        fontWeight: 'bold',
+    },
 });
+
+export default CrearDenunciaScreen;

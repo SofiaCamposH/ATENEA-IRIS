@@ -12,19 +12,19 @@ import { CandidActors } from "../../canisters";
 import React from "react";
 
 export default function IndexScreen() {
-  const { isAuthenticated, currentIdentity } = useAuth();
-  const backend = useCandidActor<CandidActors>("backend", currentIdentity) as CandidActors["backend"];
+  // const { isAuthenticated, currentIdentity } = useAuth();
+  // const backend = useCandidActor<CandidActors>("backend", currentIdentity) as CandidActors["backend"];
 
-  console.log("currentIdentity", currentIdentity);
-  console.log("isAuthenticated", isAuthenticated);
-  console.log(process.env.EXPO_PUBLIC_IC_HOST_URL, process.env.EXPO_PUBLIC_INTERNET_IDENTITY_MIDDLEWARE_URL, process.env.EXPO_PUBLIC_APP_LINK);
+  // console.log("currentIdentity", currentIdentity);
+  // console.log("isAuthenticated", isAuthenticated);
+  // console.log(process.env.EXPO_PUBLIC_IC_HOST_URL, process.env.EXPO_PUBLIC_INTERNET_IDENTITY_MIDDLEWARE_URL, process.env.EXPO_PUBLIC_APP_LINK);
 
-  const handlePress = async () => {
-    // Alert.alert("Principal", currentIdentity.getPrincipal().toString());
-    // console.log("Principal", currentIdentity.getPrincipal().toString());
-    const response = await backend.greet("Carlos");
-    console.log(response);
-  };
+  // const handlePress = async () => {
+  //   // Alert.alert("Principal", currentIdentity.getPrincipal().toString());
+  //   // console.log("Principal", currentIdentity.getPrincipal().toString());
+  //   const response = await backend.greet("Carlos");
+  //   console.log(response);
+  // };
 
 
   return (
@@ -33,8 +33,8 @@ export default function IndexScreen() {
         paddingTop: 20,
       }}
     >
-      {isAuthenticated ? <LogoutButton identity={currentIdentity} /> : <InternetIdentityMidlewareButton />}
-      <Button title="Get principal" onPress={handlePress} />
+      {/* {isAuthenticated ? <LogoutButton identity={currentIdentity} /> : <InternetIdentityMidlewareButton />} */}
+      <Button title="Get principal" />
       <StatusBar style="auto" />
       <Header />
       <View style={styles.container}>
