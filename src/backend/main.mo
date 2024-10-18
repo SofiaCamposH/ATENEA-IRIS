@@ -269,12 +269,4 @@ actor {
     return "Hello, " # name # "!";
   };
 
-  public query func getStatus() : async [Text] {
-      return [
-          "Pendiente",
-          "Reporte",
-          "Denunciado"
-      ];
-  };
-
 };
