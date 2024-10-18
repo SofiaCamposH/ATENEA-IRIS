@@ -1,0 +1,92 @@
+{
+    "dfx": "0.24.0",
+    "canisters": {
+        "internet_identity": {
+            "candid": "https://github.com/dfinity/internet-identity/releases/latest/download/internet_identity.did",
+            "frontend": {},
+            "remote": {
+                "id": {
+                    "ic": "rdmx6-jaaaa-aaaaa-aaadq-cai"
+                }
+            },
+            "type": "custom",
+            "wasm": "https://github.com/dfinity/internet-identity/releases/latest/download/internet_identity_dev.wasm.gz"
+        },
+        "backend": {
+            "type": "motoko",
+            "main": "src/backend/main.mo",
+            "declarations": {
+                "node_compatibility": false,
+                "output": "src/declarations/backend"
+            }
+        },
+        "react-dashboard": {
+            "type": "assets",
+            "dependencies": [
+                "backend",
+                "internet_identity"
+            ],
+            "source": [
+                "src/react-dashboard/dist"
+            ],
+            "workspace": "src/react-dashboard"
+        },
+        "internet_identity_middleware": {
+            "type": "assets",
+            "source": [
+                "src/internet_identity_middleware/build"
+            ],
+            "dependencies": [
+                "internet_identity"
+            ],
+            "frontend": {
+                "entrypoint": "src/internet_identity_middleware/build/index.html"
+            }
+        },
+        "network": {
+            "candid": "src/network/network.did",
+            "package": "network",
+            "type": "rust",
+            "declarations": {
+                "node_compatibility": false,
+                "output": "src/declarations/network"
+            }
+        },
+        "nlp": {
+            "candid": "src/nlp/nlp.did",
+            "package": "nlp",
+            "type": "rust",
+            "declarations": {
+                "node_compatibility": false,
+                "output": "src/declarations/nlp"
+            }
+        },
+        "vectordb": {
+            "candid": "src/vectordb/vectordb.did",
+            "package": "vectordb",
+            "type": "rust",
+            "declarations": {
+                "node_compatibility": false,
+                "output": "src/declarations/vectordb"
+            }
+        },
+        "qrcode": {
+            "candid": "src/qrcode/qrcode.did",
+            "package": "qrcode",
+            "type": "rust",
+            "declarations": {
+                "node_compatibility": false,
+                "output": "src/declarations/qrcode"
+            }
+        }
+    },
+    "defaults": {
+        "build": {
+            "args": "",
+            "packtool": ""
+        }
+    },
+    "output_env_file": ".env",
+    "version": 1
+}
+
