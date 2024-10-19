@@ -16,10 +16,10 @@ type ResumenReporte = {
 
 function Historial() {
 
-  const { isAuth, login, logout, identity } = useContext(AuthContext);
+  const { isAuth, identity } = useContext(AuthContext);
   const [reportes, setReportes] = useState<ResumenReporte[]>([]);
 
-  let canisterId: any = "bkyz2-fmaaa-aaaaa-qaaaq-cai";
+  let canisterId: any = "be2us-64aaa-aaaaa-qaabq-cai";
   let backend = createActor(canisterId, {
     agentOptions: {
       host: "http://localhost:4943",
@@ -122,12 +122,6 @@ function Historial() {
           </p>
         </div>
       </div>
-
-      {isAuth ? (
-        <button onClick={logout}>Logout</button>
-      ) : (
-        <button onClick={login}>Login</button>
-      )}
 
       {/*tabla de datos*/}
 
