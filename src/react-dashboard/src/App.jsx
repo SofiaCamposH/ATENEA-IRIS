@@ -4,6 +4,7 @@ import Index from './screens/index';
 import Historial from './screens/Historial';
 import Blockchain from './screens/blockchain';
 import Riesgo from './screens/Riesgo';
+import PiePagina from './components/piePagina'
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
           <Route path='/blockchain' element={<Blockchain />} />
           <Route path='/mapa' element={<Riesgo />} />
         </Routes>
+        <PiePagina />
       </BrowserRouter>
     </>
   )
