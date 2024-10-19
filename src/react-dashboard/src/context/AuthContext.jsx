@@ -18,7 +18,6 @@ export function AuthProvider({ children }) {
     const identity = await authClient.getIdentity();
     setIdentity(identity);
     const principal = identity.getPrincipal();
-
     if (!principal.isAnonymous()) {
       setIsAuth(true);
     }
