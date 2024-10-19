@@ -1,7 +1,19 @@
 import { Link } from "react-router-dom";
-import React from "react";
+import React, {useContext} from "react";
+import { AuthContext } from "../context/AuthContext";
 
 function Barra() {
+
+    const { isAuth, login, logout } = useContext(AuthContext);
+
+    const handleClick = () => {
+        if (isAuth) {
+            logout();
+        } else {
+            login();
+        }
+    };
+
     return (
         <div>
             {/* Barra de navegación fija */}
@@ -76,8 +88,10 @@ function Barra() {
                         </div>
 
                         {/* Botón de sesión */}
-                        <button className="bg-[#9ab2fa] text-white rounded-lg px-6 py-2">
-                            Iniciar Sesión
+                        <button className="bg-[#9ab2fa] text-white rounded-lg px-6 py-2" onClick={() => handleClick()}>
+                            {
+                                isAuth ? 'Cerrar Sesión' : 'Iniciar Sesión'
+                            }
                         </button>
                     </div>
                 </div>
