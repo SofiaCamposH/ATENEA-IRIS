@@ -21,7 +21,7 @@ function Barra() {
                 <div className="menu flex justify-between p-3">
                     <div className="logo">
                         <img
-                            src="https://ucarecdn.com/d962db80-ee9f-4e6a-8543-b14cf73994af/logoAtenea.jpeg"
+                            src="./logoAtenea.jpeg"
                             alt="logo"
                             style={{ width: "150px", height: "auto" }}
                         />
@@ -31,20 +31,20 @@ function Barra() {
                     <div className="logoDerecha flex items-center space-x-4">
                         <div className="imagenCentral flex items-center">
                             <img
-                                src="https://ucarecdn.com/0099ad8e-81e1-4bd0-b659-df0694bf2631/Capturadepantalla20241017141149.png" // Aquí puedes reemplazar la URL por la imagen que desees
+                                src="./contacto.png" // Aquí puedes reemplazar la URL por la imagen que desees
                                 alt="imagen"
                                 style={{ width: "80px", height: "auto" }}
                             />
                         </div>
                         {/* QR */}
                         <img
-                            src="https://via.placeholder.com/50" // Reemplaza esta URL con tu imagen de QR
+                            src="./qr.png" // Reemplaza esta URL con tu imagen de QR
                             alt="qr"
                             style={{ width: "50px", height: "auto" }}
                         />
                         {/* Segundo logo */}
                         <img
-                            src="https://ucarecdn.com/d962db80-ee9f-4e6a-8543-b14cf73994af/logoAtenea.jpeg"
+                            src="./logoAtenea.jpeg"
                             alt="logo"
                             style={{ width: "80px", height: "auto" }}
                         />

@@ -50,7 +50,7 @@ function Historial() {
       <div
         className="hero flex justify-center items-center bg-cover bg-center min-h-screen relative"
         style={{
-          backgroundImage: `url('https://ucarecdn.com/2c811c68-1d70-491a-9c54-eb7546cb5710/reportes.jpg')`,
+          backgroundImage: `url('./reportes.jpg')`,
         }}
       >
         <div></div>
@@ -67,13 +67,13 @@ function Historial() {
           <div className="absolute bottom-0 left-0 right-0 mb-10 flex justify-center space-x-6">
             {/* Bloque 1: Blockchain */}
             <div className="bg-blue-900 p-4 rounded-lg text-center shadow-md">
-              <img src="https://ucarecdn.com/e186682f-314c-4afe-af52-c71863e1fc04/currency_bitcoin_16dp_FFFFFF_FILL0_wght400_GRAD0_opsz20.png" alt="Blockchain" className="mx-auto mb-2" />
+              <img src="./bit.png" alt="Blockchain" className="mx-auto mb-2" />
               <h3 className="text-xl font-bold">Blockchain</h3>
             </div>
 
             {/* Bloque 2: Modificaciones */}
             <div className="bg-blue-200 p-4 rounded-lg text-center shadow-md">
-              <img src="https://ucarecdn.com/bd20b58b-149e-4440-bc80-72764f4b5282/contract_edit_16dp_FFFFFF_FILL0_wght400_GRAD0_opsz20.png" alt="Modificaciones" className="mx-auto mb-2" />
+              <img src="./editar.png" alt="Modificaciones" className="mx-auto mb-2" />
               <h3 className="text-xl font-bold">Modificaciones</h3>
             </div>
 
@@ -85,7 +85,7 @@ function Historial() {
       {/* Sección de Bienvenida */}
       <div className="p-20 rounded-lg">
         <img
-          src="https://ucarecdn.com/f98806e1-5752-4cd8-926f-642bd6342d75/datos.jpg"
+          src="./datos.jpg"
           alt="Datos"
           className="w-auto h-auto"
         />
@@ -112,7 +112,7 @@ function Historial() {
           <h2 className="text-3xl font-bold mb-6"></h2>
           <div className="flex justify-center">
             <img
-              src="https://ucarecdn.com/65828248-c357-43a0-93c4-a44ec3a802ef/historiall.jpg"
+              src="./historiall.jpg"
               alt="Demostración de la aplicación Atenea"
               className="w-79 h-auto"
             />
@@ -197,42 +197,6 @@ function Historial() {
           </tbody>
         </table>
       </div>
-
-      {/* Pie de página */}
-      <footer className="bg-gray-900 text-white py-8 mb-8 mt-8">
-        <div className="container mx-auto px-4">
-          <div className="flex justify-between">
-            <div className="w-full lg:w-1/4 mb-4 lg:mb-0">
-              <img
-                src="https://ucarecdn.com/3c489268-9922-46ec-88bb-3d96119a8a09/LOGOBLANCO.png"
-                alt="Logo de Atenea"
-                className="mb-4"
-              />
-              <p>
-                Atenea optimiza la gestión de denuncias ciudadanas, mejorando la
-                seguridad pública.
-              </p>
-            </div>
-            <div className="w-full lg:w-1/4 mb-4 lg:mb-0">
-              <h3 className="font-bold mb-2">Contáctanos</h3>
-              <p>Av. Gerónimo de la Cueva s/n, Villas del Río, Aguascalientes</p>
-              <p>
-                <a href="mailto:contacto@atenea.com" className="text-white">
-                  contacto@atenea.com
-                </a>
-              </p>
-              <p>
-                <a href="tel:+521234567890" className="text-white">
-                  +52 123 456 7890
-                </a>
-              </p>
-            </div>
-          </div>
-        </div>
-        <div className="text-center mt-4">
-          <p>IRIS 2024 © Atenea - Gestión de Reportes</p>
-        </div>
-      </footer>
     </div>
   );
 }
