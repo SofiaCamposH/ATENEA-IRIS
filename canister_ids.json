@@ -1,0 +1,20 @@
+{
+  "backend": {
+    "ic": "fvkqz-2qaaa-aaaap-akphq-cai"
+  },
+  "network": {
+    "ic": "hpwyf-eaaaa-aaaap-akpiq-cai"
+  },
+  "nlp": {
+    "ic": "hgvtz-siaaa-aaaap-akpja-cai"
+  },
+  "qrcode": {
+    "ic": "hutea-6yaaa-aaaap-akpka-cai"
+  },
+  "react-dashboard": {
+    "ic": "hix6r-jyaaa-aaaap-akpia-cai"
+  },
+  "vectordb": {
+    "ic": "hbuvn-7qaaa-aaaap-akpjq-cai"
+  }
+}
